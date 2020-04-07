@@ -1,5 +1,5 @@
 import axios from "axios"
-import { message } from "antd"
+import {message} from "antd"
 
 const axiosInstance = axios.create({
   baseURL: "https://api.github.com",
@@ -11,17 +11,26 @@ const axiosInstance = axios.create({
     // clientType: "web",
     // version: process.env.version,
     // sysCode: "new-gwy",
-    Accept:"application/vnd.github.v3+json",
-    Authorization: "access_token b7f94eb41e051dd7a2f2b9988ec1e8f659e1ad16"
+    Accept: "application/vnd.github.v3+json",
+    // Authorization: "access_token 4f9103774d819c8d55dc47a19894b1fa0482de8c",
   },
   // 超时时间
   timeout: 30000,
- 
 })
 
 axiosInstance.interceptors.request.use(
   (config) => {
-    debugger
+    // const isEnvDevelopment = process.env.NODE_ENV === "development"
+    // const isEnvProduction = process.env.NODE_ENV === "production"
+    console.log(process.env)
+    const gitParams = {
+      //   client_id: isEnvDevelopment ? "82ba62414d6f13e2768f" : "",
+      //   client_secret: isEnvDevelopment?"4ae1979b414a7fe5026696a6780c0e987e17cf00":"",
+    }
+    config.params = {
+      ...config.params,
+      ...gitParams,
+    }
     return config
   },
   (error) => {
