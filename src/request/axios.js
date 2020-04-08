@@ -1,8 +1,10 @@
 import axios from "axios"
 import {message} from "antd"
-
+// const nativeHost = window.location.protocol + "//" + window.location.host
+// const isEnvProduction = process.env.NODE_ENV === "production"
+const isEnvDevelopment = process.env.NODE_ENV === "development"
 const axiosInstance = axios.create({
-  baseURL: "https://api.github.com",
+  baseURL: isEnvDevelopment ? "/api" : "https://api.github.com",
   // 自定义请求头信息
   headers: {
     // "X-Requested-With": "XMLHttpRequest",
@@ -11,8 +13,9 @@ const axiosInstance = axios.create({
     // clientType: "web",
     // version: process.env.version,
     // sysCode: "new-gwy",
+    "User-Agent": "",
     Accept: "application/vnd.github.v3+json",
-    // Authorization: "access_token 4f9103774d819c8d55dc47a19894b1fa0482de8c",
+    Authorization: "token 3b643099c6fd86e60b00d1538b6fe84774646bc8",
   },
   // 超时时间
   timeout: 30000,
@@ -20,8 +23,6 @@ const axiosInstance = axios.create({
 
 axiosInstance.interceptors.request.use(
   (config) => {
-    // const isEnvDevelopment = process.env.NODE_ENV === "development"
-    // const isEnvProduction = process.env.NODE_ENV === "production"
     console.log(process.env)
     const gitParams = {
       //   client_id: isEnvDevelopment ? "82ba62414d6f13e2768f" : "",
@@ -41,6 +42,7 @@ axiosInstance.interceptors.request.use(
 
 axiosInstance.interceptors.response.use(
   (resp) => {
+    console.log(resp)
     return resp
   },
   (error) => {

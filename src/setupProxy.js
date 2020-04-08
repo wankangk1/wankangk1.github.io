@@ -1,13 +1,14 @@
 const {createProxyMiddleware} = require("http-proxy-middleware")
-module.exports = function(app) {
+module.exports = function (app) {
   app.use(
     "/api",
     createProxyMiddleware({
-      target: "https://api.github.com/",
+      target: "https://api.github.com",
       changeOrigin: true,
       pathRewrite: {
-        "^/api": ""
-      }
+        "^/api": "",
+      },
+      secure: false, //代理https接口 需要配置这个参数为true
     })
   )
 }
