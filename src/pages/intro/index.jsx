@@ -9,25 +9,7 @@ export default (props) => {
   return (
     <section className="homepage-intro">
       <div className="container">
-        <header>
-          <h2 class="alt">
-            Hi! I'm <strong>Prologue</strong>, a{" "}
-            <a href="http://html5up.net/license">free</a> responsive
-            <br />
-            site template designed by <a href="http://html5up.net">HTML5 UP</a>.
-          </h2>
-          <p>
-            Ligula scelerisque justo sem accumsan diam quis
-            <br />
-            vitae natoque dictum sollicitudin elementum.
-          </p>
-        </header>
-
-        <footer>
-          <Button type="link" size="large">
-            look
-          </Button>
-        </footer>
+        <div className="title">这是一个gitblog</div>
       </div>
     </section>
   )
