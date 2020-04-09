@@ -15,6 +15,7 @@ export default (props) => {
     },
   })
   useEffect(() => {
+    console.log(moment())
     run()
   })
   console.log(loading)
