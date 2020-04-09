@@ -12,7 +12,7 @@ export default (props) => {
   })
   useEffect(() => {
     run()
-  }, [])
+  })
   return (
     <div className="homepage-left">
       <div className="logo">

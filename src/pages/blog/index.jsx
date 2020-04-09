@@ -16,7 +16,7 @@ export default (props) => {
   })
   useEffect(() => {
     run()
-  }, [])
+  })
   console.log(loading)
   return (
     <div className="blog-list">
