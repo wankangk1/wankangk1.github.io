@@ -1,8 +1,8 @@
-import React, {useEffect, useState} from "react"
+import React, {useState} from "react"
 import {Spin, List, Tag} from "antd"
 import {NavLink} from "react-router-dom"
 import {MessageOutlined, TagOutlined, CalendarOutlined} from "@ant-design/icons"
-import {useRequest} from "@umijs/hooks"
+import {useRequest, useMount} from "@umijs/hooks"
 import {getIssues} from "../../request/index"
 import getImageOfMD from "../../util/getImageOfMD"
 import "./index.less"
@@ -14,7 +14,7 @@ export default (props) => {
       setIssues(result.data)
     },
   })
-  useEffect(() => {
+  useMount(() => {
     run()
   })
   console.log(loading)

@@ -26,10 +26,11 @@ script:
 
 deploy:
   provider: pages
-  skip_cleanup: true
+  skip_cleanup: true # 确保skip_cleanup设置为true，否则Travis CI将删除在构建过程中创建的所有文件，这可能会删除您尝试上传的文件。
   github_token: $GITHUB_TOKEN # github 上的token环境变量
   target_branch: master
-  local_dir: "./build"
+  local_dir: "./build" # 上传的目录
+  keep_history: true # 提交历史
   verbose: true
   on:
     branch: blog

@@ -1,7 +1,7 @@
-import React, {useState, useEffect} from "react"
+import React, {useState} from "react"
 import {NavLink} from "react-router-dom"
 import {getUser} from "../../request/index"
-import {useRequest} from "@umijs/hooks"
+import {useRequest, useMount} from "@umijs/hooks"
 export default (props) => {
   const [userInfo, setUserInfo] = useState({})
   const {run} = useRequest(getUser, {
@@ -10,9 +10,7 @@ export default (props) => {
       setUserInfo(result.data)
     },
   })
-  useEffect(() => {
-    run()
-  })
+  useMount(run)
   return (
     <div className="homepage-left">
       <div className="logo">

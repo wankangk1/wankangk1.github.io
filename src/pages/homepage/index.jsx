@@ -1,6 +1,6 @@
 import React from "react"
 import {Layout} from "antd"
-import {Route, Switch,Redirect} from "react-router-dom"
+import {Route, Switch, Redirect} from "react-router-dom"
 import HomeLeft from "./left"
 import Blog from "../blog"
 import Intro from "../intro"
@@ -11,12 +11,12 @@ export default (props) => {
   return (
     <Layout className="homepage">
       <Sider
-        breakpoint="xl"
+        breakpoint="10000"
         theme="light"
         collapsedWidth="0"
-        width="340"
+        className="homepage-slider"
         zeroWidthTriggerStyle={{
-          zIndex:999,
+          zIndex: 999,
           top: 12,
           right: -46,
           borderRadius: 4,
