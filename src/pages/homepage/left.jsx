@@ -1,21 +1,10 @@
 import React, {useState, useEffect} from "react"
 import {NavLink} from "react-router-dom"
-import {Menu} from "antd"
 import {getUser} from "../../request/index"
 import {useRequest} from "@umijs/hooks"
-import {
-  AppstoreOutlined,
-  BarChartOutlined,
-  CloudOutlined,
-  ShopOutlined,
-  TeamOutlined,
-  UserOutlined,
-  UploadOutlined,
-  VideoCameraOutlined,
-} from "@ant-design/icons"
 export default (props) => {
   const [userInfo, setUserInfo] = useState({})
-  const {loading, run} = useRequest(getUser, {
+  const {run} = useRequest(getUser, {
     manual: true,
     onSuccess: (result, params) => {
       setUserInfo(result.data)

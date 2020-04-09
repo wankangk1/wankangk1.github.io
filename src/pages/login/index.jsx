@@ -5,12 +5,9 @@ import {UserOutlined, LockOutlined} from "@ant-design/icons"
 import {useRequest} from "@umijs/hooks"
 import {useHistory} from "react-router-dom"
 import {getIssues} from "../../request/index"
-export default props => {
+export default (props) => {
   let history = useHistory()
-  function onSubmit() {
-    return window.axios.get("/api/mock/5336/home/userInfo?userId=2")
-  }
-  const onFinish = values => {
+  const onFinish = (values) => {
     run()
   }
   const {loading, run} = useRequest(getIssues, {
@@ -20,14 +17,14 @@ export default props => {
         message.success(isLogin ? "登录成功" : "注册成功", 1)
         history.push("/")
       }
-    }
+    },
   })
   const [form] = Form.useForm()
   const [isLogin, setIsLogin] = useState(true)
   const switchBtn = () => {
     form.setFieldsValue({
       account: "",
-      password: ""
+      password: "",
     })
     setIsLogin(!isLogin)
   }
@@ -39,7 +36,7 @@ export default props => {
         onFinish={onFinish}
         initialValues={{
           account: "admin",
-          password: "admin"
+          password: "admin",
         }}
       >
         <Form.Item
