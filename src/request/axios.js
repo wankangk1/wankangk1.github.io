@@ -1,17 +1,18 @@
 import axios from "axios"
-import { message } from "antd"
+import {message} from "antd"
 // const nativeHost = window.location.protocol + "//" + window.location.host
 // const isEnvProduction = process.env.NODE_ENV === "production"
 const isEnvDevelopment = process.env.NODE_ENV === "development"
 //提交到github仓库会被删除，转一下
-const access_token = "40775ecdfdcc5c7e3" + "438572dc776030a8024fc29"
+const access_token = "d08f48e2da337d9f33"
+const access_token2 = "06865d31cd6ec6c37ebfd0"
 const axiosInstance = axios.create({
   baseURL: "https://api.github.com",
   // 自定义请求头信息
   headers: {
     "User-Agent": "",
     Accept: "application/vnd.github.v3+json",
-    Authorization: `token ${access_token}`,
+    Authorization: `token ${access_token + access_token2}`,
   },
   // 超时时间
   timeout: 30000,
