@@ -34,16 +34,18 @@ export default (props) => {
             <NavLink
               className="nav-text"
               activeClassName="nav-text-active"
-              to="/intro"
-            >
-              intro
-            </NavLink>
-            <NavLink
-              className="nav-text"
-              activeClassName="nav-text-active"
               to="/blog"
             >
               blog
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              className="nav-text"
+              activeClassName="nav-text-active"
+              to="/intro"
+            >
+              intro
             </NavLink>
           </li>
         </ul>

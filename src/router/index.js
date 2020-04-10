@@ -1,16 +1,16 @@
 import React from "react"
-import {HashRouter, Route, Switch} from "react-router-dom"
+import {BrowserRouter, Route, Switch} from "react-router-dom"
 import Homepage from "../pages/homepage"
 import Login from "../pages/login"
-import GithubApiDoc from "../pages/githubApiDoc"
+import CodeFragments from "../pages/codeFragments"
 const BasicRoute = () => (
-  <HashRouter>
+  <BrowserRouter>
     <Switch>
       <Route exact path="/login" component={Login} />
-      <Route exact path="/githubdoc" component={GithubApiDoc} />
+      <Route exact path="/code" component={CodeFragments} />
       <Route path="/" component={Homepage} />
     </Switch>
-  </HashRouter>
+  </BrowserRouter>
 )
 
 export default BasicRoute

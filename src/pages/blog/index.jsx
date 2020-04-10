@@ -1,5 +1,5 @@
 import React, {useState} from "react"
-import {Spin, List, Tag} from "antd"
+import {List, Tag} from "antd"
 import {NavLink} from "react-router-dom"
 import {MessageOutlined, TagOutlined, CalendarOutlined} from "@ant-design/icons"
 import {useRequest, useMount} from "@umijs/hooks"
@@ -15,6 +15,7 @@ export default (props) => {
     },
   })
   useMount(() => {
+    console.log("首次加载")
     run()
   })
   console.log(loading)
@@ -27,7 +28,11 @@ export default (props) => {
         renderItem={(item) => (
           <List.Item key={item.title}>
             <List.Item.Meta
-              title={<NavLink to="/">{item.title}</NavLink>}
+              title={
+                <NavLink to={{pathname: "/blogDetail", state: {data: item}}}>
+                  {item.title}
+                </NavLink>
+              }
               description={item.description}
             />
             <div
@@ -63,9 +68,7 @@ export default (props) => {
             </div>
           </List.Item>
         )}
-      >
-        <Spin style={{height: "100vh"}} spinning={loading} />
-      </List>
+      />
     </div>
   )
 }
