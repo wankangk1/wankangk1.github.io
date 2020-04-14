@@ -8,7 +8,6 @@ const axiosInstance = axios.create({
   baseURL: "https://api.github.com",
   // 自定义请求头信息
   headers: {
-    "User-Agent": "",
     Accept: "application/vnd.github.v3+json",
   },
   // 超时时间
