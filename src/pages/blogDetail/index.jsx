@@ -1,7 +1,5 @@
 import React from "react"
 import ReactMarkdown from "react-markdown"
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter"
-import { dark } from "react-syntax-highlighter/dist/esm/styles/prism"
 import CodeBlock from "src/components/codeBlock"
 import "./index.less"
 export default (props) => {
