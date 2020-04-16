@@ -1,12 +1,12 @@
 import React from "react"
-import {Table, Tag, Row, Col} from "antd"
+import { Table, Tag, Row, Col } from "antd"
 import "./index.less"
 const columns = [
   {
     title: "Name",
     dataIndex: "name",
     key: "name",
-    render: (text) => <a>{text}</a>,
+    render: (text) => <span>{text}</span>,
   },
   {
     title: "Age",
@@ -43,8 +43,8 @@ const columns = [
     key: "action",
     render: (text, record) => (
       <span>
-        <a style={{marginRight: 16}}>Invite {record.name}</a>
-        <a>Delete</a>
+        <span style={{ marginRight: 16 }}>Invite {record.name}</span>
+        <span>Delete</span>
       </span>
     ),
   },
@@ -72,7 +72,7 @@ const data = [
     tags: ["cool", "teacher"],
   },
 ]
-const contentLayout = {xxl: 20, xl: 19, lg: 19, sm: 24, xs: 24}
+const contentLayout = { xxl: 20, xl: 19, lg: 19, sm: 24, xs: 24 }
 export default (props) => {
   return (
     <Row className="code-demo" justify="center">
