@@ -7,9 +7,8 @@ const {
 const path = require("path")
 module.exports = override(
   (config, env) => {
-    console.log(config, "env:", env)
-    config.devtool =
-      env === "production" ? "cheap-module-source-map" : config.devtool  
+    // console.log(config)
+    console.log("env:", env)
     return config
   },
   fixBabelImports("import", {

@@ -11,22 +11,16 @@ import { getIssues } from "../../request/index"
 import getImageOfMD from "../../util/getImageOfMD"
 import "./index.less"
 export default () => {
-  const { data } = useRequest(getIssues, {
+  const { data, run } = useRequest(getIssues, {
     formatResult: (response) => {
-      console.log(
-        window._.filter(response.data, (item) =>
-          window._.every(item.labels, (element) => element.name === "invalid")
-        )
-      )
+      //过滤数据
       return window._.filter(response.data, (item) =>
         window._.every(item.labels, (element) => element.name !== "invalid")
       )
     },
   })
-  console.log(data)
-
   return (
-    <div className="blog-list">
+    <div className="blog-list" onClick={run}>
       <List
         itemLayout="vertical"
         size="large"

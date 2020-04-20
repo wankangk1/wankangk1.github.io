@@ -1,9 +1,13 @@
 import axios from "axios"
-import {message} from "antd"
+import { message } from "antd"
 // const nativeHost = window.location.protocol + "//" + window.location.host
 // const isEnvProduction = process.env.NODE_ENV === "production"
 const isEnvDevelopment = process.env.NODE_ENV === "development"
-//提交到github仓库会被删除，转一下
+/*
+  防止重复提交，使用axios里的构造函数CancelToken
+*/
+let requestList = [] //声明一个数组用于存储每个ajax请求的取消函数和ajax标识
+
 const axiosInstance = axios.create({
   baseURL: "https://api.github.com",
   // 自定义请求头信息
@@ -16,7 +20,21 @@ const axiosInstance = axios.create({
 
 axiosInstance.interceptors.request.use(
   (config) => {
-    console.log(process.env)
+    console.log(config,config.params)
+    config.cancelToken = new axios.CancelToken((cancelRequest) => {
+      //请求标记
+      let requestFlag =
+        JSON.stringify(config.url) +
+        JSON.stringify(config.data) +
+        "&" +
+        config.method
+      if (requestList.includes(requestFlag)) {
+        //取消请求
+        cancelRequest("取消重复请求")
+      } else {
+        requestList.push(requestFlag)
+      }
+    })
     const gitParams = {
       client_id: isEnvDevelopment
         ? "20c4ebe3cc4a5c0c8310"
@@ -43,9 +61,20 @@ axiosInstance.interceptors.request.use(
 )
 
 axiosInstance.interceptors.response.use(
-  (resp) => {
-    console.log(resp)
-    return resp
+  (response) => {
+    //请求结束，标记清除
+    
+    let requestFlag =
+      JSON.stringify(response.config.url) +
+      JSON.stringify(response.config.data) +
+      "&" +
+      response.config.method
+    requestList.splice(
+      requestList.findIndex((item) => item === requestFlag),
+      1
+    )
+
+    return response
   },
   (error) => {
     return Promise.reject(error)
