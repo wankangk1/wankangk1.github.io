@@ -1,16 +1,16 @@
-import React, {useState} from "react"
+import React, { useState } from "react"
 import "./index.less"
-import {Form, Input, Button, message} from "antd"
-import {UserOutlined, LockOutlined} from "@ant-design/icons"
-import {useRequest} from "@umijs/hooks"
-import {useHistory} from "react-router-dom"
-import {getIssues} from "../../request/index"
+import { Form, Input, Button, message } from "antd"
+import { UserOutlined, LockOutlined } from "@ant-design/icons"
+import { useRequest } from "@umijs/hooks"
+import { useHistory } from "react-router-dom"
+import { getIssues } from "../../request/index"
 export default (props) => {
   let history = useHistory()
   const onFinish = (values) => {
     run()
   }
-  const {loading, run} = useRequest(getIssues, {
+  const { loading, run } = useRequest(getIssues, {
     manual: true,
     onSuccess: (result, params) => {
       if (result.success) {
@@ -42,7 +42,7 @@ export default (props) => {
         <Form.Item
           name="account"
           autoComplete={"off"}
-          rules={[{required: true, message: "请输入账号"}]}
+          rules={[{ required: true, message: "请输入账号" }]}
         >
           <Input
             prefix={<UserOutlined className="site-form-item-icon" />}
@@ -52,8 +52,8 @@ export default (props) => {
         <Form.Item
           name="password"
           autoComplete="new-password"
-          rules={[{required: true, message: "请输入密码"}]}
-          style={{margin: "0"}}
+          rules={[{ required: true, message: "请输入密码" }]}
+          style={{ margin: "0" }}
         >
           <Input
             prefix={<LockOutlined className="site-form-item-icon" />}
@@ -61,12 +61,12 @@ export default (props) => {
             placeholder="密码"
           />
         </Form.Item>
-        <Form.Item style={{textAlign: "right", marginBottom: "0"}}>
+        <Form.Item style={{ textAlign: "right", marginBottom: "0" }}>
           <span className="switch-btn" onClick={switchBtn}>
             {isLogin ? "去注册" : "去登录"}
           </span>
         </Form.Item>
-        <Form.Item style={{textAlign: "center"}}>
+        <Form.Item style={{ textAlign: "center" }}>
           <Button type="primary" htmlType="submit" block loading={loading}>
             {isLogin ? "登录" : "注册"}
           </Button>

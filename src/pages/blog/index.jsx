@@ -47,7 +47,7 @@ export default () => {
               {getImageOfMD(item.body)}
               <CalendarOutlined style={{ marginRight: 5 }} />
               <span style={{ marginRight: 10, marginLeft: 5 }}>
-                {window.moment(item.created_at).format("Y-M-D")}
+                {moment(item.created_at).format("Y-M-D")}
               </span>
               <MessageOutlined style={{ marginRight: 5 }} />
               <span style={{ marginRight: 10, marginLeft: 5 }}>
