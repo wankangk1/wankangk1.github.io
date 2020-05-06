@@ -2,12 +2,13 @@ import React, { PureComponent } from "react"
 import PropTypes from "prop-types"
 import { PrismAsyncLight  as SyntaxHighlighter } from "react-syntax-highlighter"
 // 设置高亮样式
-import { dark } from "react-syntax-highlighter/dist/esm/styles/prism"
+import { atomDark } from "react-syntax-highlighter/dist/esm/styles/prism"
 // 设置高亮的语言
 import {
   jsx,
   javascript,
 } from "react-syntax-highlighter/dist/esm/languages/prism"
+console.log(atomDark)
 class CodeBlock extends PureComponent {
 static propTypes = {
     value: PropTypes.string.isRequired
@@ -24,7 +25,7 @@ static propTypes = {
     return (
       <SyntaxHighlighter
         language="js"
-        style={dark}
+        style={atomDark}
         showLineNumbers={true}
       >
         {value}
